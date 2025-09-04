@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root {
+  --color-header-icons: #fff;
+  --color-accent: #007bff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.0625rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
