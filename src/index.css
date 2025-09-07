@@ -18,3 +18,16 @@ body {
   margin: 0;
   padding: 0;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-animation {
+  animation: scroll 10s linear infinite;
+}

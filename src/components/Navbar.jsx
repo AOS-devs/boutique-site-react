@@ -13,7 +13,7 @@ const Navbar = ({onHamburgerStateChange}) => {
   }
 
   return (
-    <nav className="border-b border-b-[#888] py-4 flex justify-between items-center bg-[#151515] text-white h-[70px] relative">
+    <nav className="border-b border-b-[#888] py-4 flex justify-between items-center bg-[#151515] text-white h-[70px] w-full relative">
       <div className="flex flex-col justify-center items-center  cursor-pointer h-[48px] w-[48px] gap-[5px]" onClick={hamburgerHandler} >
         <span className={`bg-white w-[20px] h-[1.5px] origin-center transition-transform ${isOpen ? "rotate-45 translate-y-[3px]": ""}`}></span>
         <span className={`bg-white w-[20px] h-[1.5px] ${isOpen ? "hidden": ""}`}></span>

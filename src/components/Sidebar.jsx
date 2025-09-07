@@ -1,4 +1,5 @@
 import React from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen }) => {
@@ -16,7 +17,7 @@ const Sidebar = ({ isOpen }) => {
           <Link to="">
             <div className="border-b py-4 flex justify-between ">
               <div>SHOP</div>
-              <div>--))</div>
+              <FaArrowRightLong className="w-4 h-4" />
             </div>
           </Link>
           <Link to="">
