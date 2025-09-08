@@ -1,19 +1,6 @@
 import { Link } from "react-router-dom";
+import { images, products } from "../contexts/Products";
 
-const sampleProducts = [
-  {
-    id: 1,
-    title: "Product One",
-    price: 29.99,
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 2,
-    title: "Product Two",
-    price: 49.99,
-    image: "https://via.placeholder.com/150",
-  },
-];
 
 const HomePage = () => {
   return (
@@ -34,41 +21,30 @@ const HomePage = () => {
           <span className="border-b pb-0.5">Shop New In</span>
         </Link>
         <div className="flex gap-4 w-full h-80 overflow-x-auto [scrollbar-width:none] mt-8">
-          <div className="w-50 h-full border flex flex-col flex-shrink-0 items-center">
-            <figure className="mb-4">
-              <img src="" alt="" className="w-full h-55 object-cover " />
+          
+          {/* <div className="w-50 h-full border flex flex-col flex-shrink-0 items-center">
+            <figure className="mb-4 w-full ">
+              <img src={images[1]} alt="" className="w-full h-55 " />
             </figure>
-            <h2 className="mb-2 font-bold">HF X BURNA SLEEVLESS TEE</h2>
-            <p className="mb-3">$208.96 USD</p>
+            <h2 className="mb-2 font-bold">{products[0].title}</h2>
+            <p className="mb-3">${products[0].price} USD</p>
             <p className="mb-3">Available in 3 colors</p>
-          </div>
+          </div> */}
 
-          <div className="w-50 h-full border flex flex-col flex-shrink-0 items-center">
-            <figure className="mb-4">
-              <img src="" alt="" className="w-full h-55" />
-            </figure>
-            <h2 className="mb-2 font-bold">HF X BURNA SLEEVLESS TEE</h2>
-            <p className="mb-3">$208.96 USD</p>
-            <p className="mb-3">Available in 3 colors</p>
-          </div>
-          <div className="w-50 h-full border flex flex-col flex-shrink-0 items-center">
-            <figure className="mb-4">
-              <img src="" alt="" className="w-full h-55" />
-            </figure>
-            <h2 className="mb-2 text-[12px] font-bold">
-              HF X BURNA SLEEVLESS TEE
-            </h2>
-            <p className="mb-3">$208.96 USD</p>
-            <p className="mb-3">Available in 3 colors</p>
-          </div>
-          <div className="w-50 h-full border flex flex-col flex-shrink-0 items-center">
-            <figure className="mb-4">
-              <img src="" alt="" className="w-full h-55" />
-            </figure>
-            <h2 className="mb-2 font-bold">HF X BURNA SLEEVLESS TEE</h2>
-            <p className="mb-3">$208.96 USD</p>
-            <p className="mb-3">Available in 3 colors</p>
-          </div>
+          {products.map((product) => {
+            return (
+              <Link key={product.id} to={`/product/${product.id}`}>
+                <div  className="w-50 h-full flex flex-col flex-shrink-0 items-center">
+                  <figure className="mb-4 w-full shadow-2xl ">{/* review shadow tailwind */}
+                    <img src={product.image} alt="" className="w-full h-55 object-cover" />
+                  </figure>
+                  <h2 className="mb-2 font-bold">{product.title}</h2>
+                  <p className="mb-3">${product.price} USD</p>
+                  <p className="mb-3">Available in 3 colors</p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

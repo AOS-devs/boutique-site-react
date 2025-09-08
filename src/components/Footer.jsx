@@ -7,13 +7,15 @@ const Footer = () => {
     <footer className="w-full h-[130vh] bg-[#151515] text-white p-4 relative ">
       <div className="mb-10">
         <figure className="flex mb-4">
-          <img src="" alt="Logo" />
+          <img src={null} alt="Logo" />
         </figure>
         <p className="text-[12px] mb-4 ">
           At High Fashion By Jol, we believe that fashion is an expression of
           individuality and artistry.
         </p>
-        <FaInstagram className="w-4 h-4 text-[14px] mb-4" />
+        <Link>
+          <FaInstagram className="w-4 h-4 text-[14px] mb-4" />
+        </Link>
       </div>
 
       <div className="mb-4">
