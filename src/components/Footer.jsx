@@ -1,14 +1,26 @@
 import { FaArrowRightLong, FaInstagram } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import DropdownButton from "./DropdownButton";
+import MoreInfoTab from "./MoreInfoTab";
 
 const Footer = () => {
+  const quickLinks = (
+    <div className="flex flex-col gap-2 text-[11px]">
+      <Link to="/">HOME</Link>
+      <Link to="/allproducts">ABOUT</Link>
+      <Link to="/allproducts">CONTACT</Link>
+      <Link to="/allproducts">FAQ</Link>
+    </div>
+  );
+  const shopLink = <div>SHOP ALL</div>;
   return (
     <footer className="w-full h-[130vh] bg-[#151515] text-white p-4 relative ">
       <div className="mb-10">
-        <figure className="flex mb-4">
-          <img src={null} alt="Logo" />
-        </figure>
+        <Link to="/" className="w-full flex mb-4">
+          <figure className="w-full h-full">
+            <img src={null} alt="Logo" />
+          </figure>
+        </Link>
         <p className="text-[12px] mb-4 ">
           At High Fashion By Jol, we believe that fashion is an expression of
           individuality and artistry.
@@ -19,14 +31,8 @@ const Footer = () => {
       </div>
 
       <div className="mb-4">
-        <div className="flex justify-between py-4 border-t-1 ">
-          <div className="font-bold">QUICK LINK</div>
-          <DropdownButton />
-        </div>
-        <div className="flex justify-between py-4 border-t-1 ">
-          <div className="font-bold">SHOP</div>
-          <DropdownButton />
-        </div>
+        <MoreInfoTab title="QUICK LINK" content={quickLinks} color="white" />
+        <MoreInfoTab title="SHOP" content={shopLink} color="white" />
       </div>
 
       <div className="text-[12px] font-bold py-4 mb-4">

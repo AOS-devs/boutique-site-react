@@ -1,0 +1,31 @@
+import React from "react";
+import { products } from "../contexts/Products";
+import { Link } from "react-router-dom";
+
+const ProductCarousel = () => {
+  return (
+    <div className="w-full h-80 text-xs overflow-x-auto [scrollbar-width:none] flex gap-4">
+      {products.map((product) => {
+        return (
+          <Link key={product.id} to={`/product/${product.id}`}>
+            <div className="w-50 h-full flex flex-col flex-shrink-0 items-center">
+              <figure className="mb-4 w-full shadow-xs ">
+                {/* review shadow tailwind */}
+                <img
+                  src={product.image}
+                  alt=""
+                  className="w-full h-55 object-cover"
+                />
+              </figure>
+              <h2 className="w-full h-9 text-center mb-2 font-bold">{product.title}</h2>
+              <span className="w-full h-4.5 text-center mb-3">${product.price} USD</span>
+              <div className="w-full h-4.5 text-center text-[13px] mb-3">Available in 3 colors</div>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
+
+export default ProductCarousel;
