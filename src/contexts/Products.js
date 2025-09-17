@@ -1,6 +1,7 @@
 import image1 from "../assets/IMG_4215-scaled_a9ee11c2-7283-4bee-9482-b464ff1f2879.webp";
 import image2 from "../assets/oct8_1.webp";
 import image3 from "../assets/homepage-1.png";
+import image4 from "../assets/IMG_7630.webp"
 
 const productsNoID = [
   {
@@ -8,6 +9,12 @@ const productsNoID = [
     price: 208.96,
     quantity: 25,
     image: image1,
+  },
+  {
+    title: "HF X SWEAT PUNK",
+    price: 260.96,
+    quantity: 15,
+    image: image4,
   },
   {
     title: "HF X BURNA SLEEVELESS TEE",
@@ -101,4 +108,4 @@ export const products = productsNoID.map((product, index) => {
   return {...product, id: `${index+1}`}
 })
 
-export const images = [image1, image2, image3];
+export const images = [image1, image2, image3, image4];

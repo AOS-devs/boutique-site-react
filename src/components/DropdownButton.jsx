@@ -4,8 +4,12 @@ const DropdownButton = ({ bgColor, onBtnClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDropdownClick = () => {
-    setIsOpen((prev) => !prev);
-    onBtnClick(isOpen)
+    setIsOpen((prev) => {
+      const newState = !prev
+      onBtnClick(newState)
+
+      return newState
+    });
   };
   return (
     <button

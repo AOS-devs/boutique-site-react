@@ -9,6 +9,7 @@ import { BsPinterest } from "react-icons/bs";
 import ProductCarousel from "../components/ProductCarousel";
 import Faq from "../components/Faq";
 import { useState } from "react";
+import QtyCounter from "../components/QtyCounter";
 
 const ProductPage = () => {
   const [count, setCount] = useState(1)
@@ -121,15 +122,7 @@ const ProductPage = () => {
               </div>
               <div className="w-full h-[106px] text-lg mb-[25px] flex flex-col flex-1 ">
                 <div className="w-full mb-2.5 flex ">
-                  <div className="w-[25%] h-12 mr-[10px] flex items-center border">
-                    <button onClick={handleDecreaseQty} className="w-[33%] h-full text-center xy-center cursor-pointer">
-                      -
-                    </button>
-                    <div className="w-[34%] h-full text-center xy-center font-bold">{count}</div>
-                    <button onClick={handleIncreaseQty}  className="w-[33%] h-full text-center xy-center cursor-pointer">
-                      +
-                    </button>
-                  </div>
+                  <QtyCounter />
                   <button
                     onClick={addToCart}
                     className="w-[75%] xy-center text-center text-xs py-[7px] px-[30px] cursor-pointer border"

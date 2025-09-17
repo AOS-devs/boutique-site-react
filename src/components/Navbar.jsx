@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import { useState } from "react";
 
@@ -8,8 +8,11 @@ const Navbar = ({onHamburgerStateChange}) => {
   const { cart } = useCart();
 
   const hamburgerHandler = () => {
-    setIsOpen(prev => !prev)
-    onHamburgerStateChange(isOpen)
+    setIsOpen(prev => {
+      const newState = !prev
+      onHamburgerStateChange(newState)
+      return newState
+    })
   }
 
   return (
@@ -38,7 +41,7 @@ const Navbar = ({onHamburgerStateChange}) => {
             ></path>
           </svg>
         </div>
-        <Link className="cursor-pointer" >
+        <Link to="/cart" className="cursor-pointer" >
           <svg
             width="19"
             height="20"
