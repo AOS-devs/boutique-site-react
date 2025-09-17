@@ -1,30 +1,30 @@
 import { Link, useParams } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import { products } from "../contexts/Products";
-import { images } from "../contexts/Products";
-import {
-  RiArrowDropLeftLine,
-  RiArrowDropRightLine,
-} from "react-icons/ri";
-import {
-  FaFacebook,
-  FaWhatsapp,
-  FaXTwitter,
-} from "react-icons/fa6";
-import {
-  PiCopySimpleFill,
-  PiRulerLight,
-  PiTShirtBold,
-} from "react-icons/pi";
+import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
+import { FaFacebook, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
+import { PiCopySimpleFill, PiRulerLight, PiTShirtBold } from "react-icons/pi";
 import { TbBox, TbIroning } from "react-icons/tb";
 import { BsPinterest } from "react-icons/bs";
 import ProductCarousel from "../components/ProductCarousel";
 import Faq from "../components/Faq";
+import { useState } from "react";
 
 const ProductPage = () => {
+  const [count, setCount] = useState(1)
   const { id } = useParams();
-  const { addToCart } = useCart();
 
+  const handleIncreaseQty = () => {
+    setCount(prev => prev+1)
+  }
+
+  const handleDecreaseQty = () => {
+    setCount(prev => Math.max(prev-1, 1))
+  }
+
+  const { cart, addToCart, incrementCartItem, decrementCartItem } = useCart();
+
+  console.log( cart)
   /* The below extracts clicked product's detail by ID */
   const extractProductbyID = products.filter((product) => {
     if (product.id === id) {
@@ -34,6 +34,7 @@ const ProductPage = () => {
   /* The above extracts clicked product's detail by ID */
 
   const product = extractProductbyID[0];
+  console.log(product.id)
 
   if (!product) {
     return <div>Product not found </div>;
@@ -121,17 +122,18 @@ const ProductPage = () => {
               <div className="w-full h-[106px] text-lg mb-[25px] flex flex-col flex-1 ">
                 <div className="w-full mb-2.5 flex ">
                   <div className="w-[25%] h-12 mr-[10px] flex items-center border">
-                    <div className="w-[33%] h-full text-center xy-center cursor-pointer">
+                    <button onClick={handleDecreaseQty} className="w-[33%] h-full text-center xy-center cursor-pointer">
                       -
-                    </div>
-                    <div className="w-[34%] h-full text-center xy-center font-bold">
-                      1
-                    </div>
-                    <div className="w-[33%] h-full text-center xy-center cursor-pointer">
+                    </button>
+                    <div className="w-[34%] h-full text-center xy-center font-bold">{count}</div>
+                    <button onClick={handleIncreaseQty}  className="w-[33%] h-full text-center xy-center cursor-pointer">
                       +
-                    </div>
+                    </button>
                   </div>
-                  <button className="w-[75%] xy-center text-center text-xs py-[7px] px-[30px] cursor-pointer border">
+                  <button
+                    onClick={addToCart}
+                    className="w-[75%] xy-center text-center text-xs py-[7px] px-[30px] cursor-pointer border"
+                  >
                     ADD TO CART
                   </button>
                 </div>
