@@ -12,7 +12,7 @@ const Footer = () => {
       <Link to="/allproducts">FAQ</Link>
     </div>
   );
-  const shopLink = <div>SHOP ALL</div>;
+  const shopLink = <Link to="/allproducts" className="text-[11px]">SHOP ALL</Link>;
   return (
     <footer className="w-full h-[130vh] bg-[#151515] text-white p-4 relative ">
       <div className="mb-10">

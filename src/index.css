@@ -25,6 +25,14 @@ body {
   align-items: center;
 }
 
+.bgColor {
+  background-color: #151515;
+}
+
+.txtColor {
+  color: #151515;
+}
+
 @keyframes scroll {
   0% {
     transform: translateX(0%);
