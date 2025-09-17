@@ -1,10 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
-import ProductCarousel from "../components/ProductCarousel";
 import MoreInfoTab from "../components/MoreInfoTab";
 import { images } from "../contexts/Products";
 import QtyCounter from "../components/QtyCounter";
-import { BiTrash } from "react-icons/bi";
 import { CgTrash } from "react-icons/cg";
 
 const CartPage = () => {
