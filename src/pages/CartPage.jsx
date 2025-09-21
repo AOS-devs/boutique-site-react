@@ -5,13 +5,13 @@ import { images } from "../contexts/Products";
 import QtyCounter from "../components/QtyCounter";
 import { CgTrash } from "react-icons/cg";
 import ProductCarousel from "../components/ProductCarousel";
+import CartItem from "../components/CartItem";
+import Cart from "../components/Cart";
 
 const CartPage = () => {
   const { cart, addToCart, removeFromCart, clearCart, decrementCartItem } =
     useCart();
   const navigate = useNavigate();
-
-  const addText = <textarea className="border w-full h-30 px-4 py-3" />
 
   const shippingFee = 5.0; // flat shipping for MVP
   const subtotal = cart.reduce(
@@ -34,57 +34,19 @@ const CartPage = () => {
   } */
 
   return (
-    <div className="w-full my-5 px-4 flex flex-col txtColor">
-      <h4 className="w-full h-7 text-xl font-bold mb-7.5">Your Cart</h4>
-      <div className="w-full text-xs flex flex-col">
-        <div className="w-full py-4.5 flex shadow-sm">
-          <div className="w-full h-full text-start flex-1 ">PRODUCT</div>
-          <div className="w-2/10 h-full text-end ">TOTAL</div>
+    <div className="w-full my-5 px-4 flex flex-col md:flex-row-reverse lg:flex-row-reverse lg:gap-8 txtColor">
+      <Cart />
+      <div className="w-full md:w-5/8 lg:w-5/8 md:h-[85vh] lg:h-[106vh] md:overflow-y-scroll lg:overflow-y-scroll md:[scrollbar-width:none] lg:[scrollbar-width:none] text-lg py-12.5 flex flex-col ">
+        <div className="w-full mb-5 text-center ">
+          <h2 className="w-full h-7.5 text-[26px] font-semibold mb-2.5 py-1 ">
+            YOU MAY ALSO LIKE
+          </h2>
+          <p className="w-full text-xs py-1">
+            Combine your style with these products
+          </p>
         </div>
-        <div className="w-full h-42.5 flex justify-between items-center border-y border-gray-300">
-          <div className=" h-full py-5 pr-3.5 flex items-center">
-            <figure className="w-19 h-full mr-4">
-              <img
-                src={images[3]}
-                alt=""
-                className="w-full h-full object-cover "
-              />
-            </figure>
-            <div className="w-full h-full flex-1 flex flex-col">
-              <Link className="w-full text-base font-bold text-wrap">
-                HF X 101 AVENUE HOODIE TOP
-              </Link>
-              <div className="my-1.5 flex flex-col">
-                <span>COLOR: BLACK</span>
-                <span>SIZE: S</span>
-              </div>
-              <div className="flex items-center">
-                <QtyCounter height="10" width="20" />
-                <CgTrash onClick={removeFromCart} className="w-4.5 h-4.5 text-red-500"/>
-              </div>
-            </div>
-          </div>
-          <div className="w-3/10 h-full flex items-center justify-end text-end py-5">N480,000.00</div>
-        </div>
-        <div>
-          <MoreInfoTab title="Add notes" content={addText} color="black" />
-        </div>
-        <button className="w-full h-12 py-2 px-7.5 bgColor text-white border">CHECKOUT . N480,000.00</button>
-        <p className="w-full my-5 text-center">Taxes and shipping calculated at checkout</p>
+        <ProductCarousel />
       </div>
-      <div className="w-full text-lg py-12.5 flex flex-col">
-          <div className="w-full mb-5 text-center ">
-            <h2 className="w-full h-7.5 text-[26px] font-semibold mb-2.5 py-1 ">
-              YOU MAY ALSO LIKE
-            </h2>
-            <p className="w-full text-xs py-1">
-              Combine your style with these products
-            </p>
-          </div>
-          <div className="w-full h-auto mb-30">
-            <ProductCarousel />
-          </div>
-        </div>
     </div>
   );
 };
