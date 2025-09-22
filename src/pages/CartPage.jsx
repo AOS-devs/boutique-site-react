@@ -1,11 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
-import MoreInfoTab from "../components/MoreInfoTab";
-import { images } from "../contexts/Products";
-import QtyCounter from "../components/QtyCounter";
-import { CgTrash } from "react-icons/cg";
 import ProductCarousel from "../components/ProductCarousel";
-import CartItem from "../components/CartItem";
 import Cart from "../components/Cart";
 
 const CartPage = () => {
@@ -19,7 +14,7 @@ const CartPage = () => {
     0
   );
   const total = subtotal + shippingFee;
-  console.log(cart);
+  //console.log(cart);
 
   /* if (cart.lengdiv === 0) {
     return (
@@ -36,7 +31,7 @@ const CartPage = () => {
   return (
     <div className="w-full my-5 px-4 flex flex-col md:flex-row-reverse lg:flex-row-reverse lg:gap-8 txtColor">
       <Cart />
-      <div className="w-full md:w-5/8 lg:w-5/8 md:h-[85vh] lg:h-[106vh] md:overflow-y-scroll lg:overflow-y-scroll md:[scrollbar-width:none] lg:[scrollbar-width:none] text-lg py-12.5 flex flex-col ">
+      <div className="w-full md:w-5/8 lg:w-5/8 md:h-[85vh] lg:h-[106vh] md:overflow-y-scroll md:[scrollbar-width:none] lg:overflow-y-scroll lg:[scrollbar-width:none] text-lg py-12.5 flex flex-col ">
         <div className="w-full mb-5 text-center ">
           <h2 className="w-full h-7.5 text-[26px] font-semibold mb-2.5 py-1 ">
             YOU MAY ALSO LIKE

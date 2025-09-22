@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 
 const QtyCounter = ({width, height}) => {
-    const [count, setCount] = useState(1)/* 
-    const [isHeight, setIsHeight] = useState(false)
-    const [isWidth, setIsWidth] = useState(false)
-    
-    if (height) {
-      setIsHeight(true)
-    }
-    if (width) {
-      setIsWidth(true)
-    } */
+    const [count, setCount] = useState(1)
 
       const handleIncreaseQty = () => {
         setCount(prev => prev+1)
@@ -20,7 +11,7 @@ const QtyCounter = ({width, height}) => {
         setCount(prev => Math.max(prev-1, 1))
       }
   return (
-    <div className={`${height ? `h-${height}` : "h-full"} ${width ? `w-${width}` : "w-[25%]"} mr-[10px] flex items-center border`}>
+    <div className={`h-${height} w-${width}  mr-[10px] flex items-center border`}>
       <button
         onClick={handleDecreaseQty}
         className="w-[33%] h-full text-center xy-center cursor-pointer"

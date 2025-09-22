@@ -18,7 +18,7 @@ const CartItem = () => {
                   className="w-full h-full object-cover "
                 />
               </figure>
-              <div className="w-full h-full flex-1 flex flex-col">
+              <div className="w-full h-full flex-1 flex flex-col gap-1">
                 <Link className="w-full text-base font-bold text-wrap">
                   HF X 101 AVENUE HOODIE TOP
                 </Link>
@@ -26,8 +26,8 @@ const CartItem = () => {
                   <span>COLOR: BLACK</span>
                   <span>SIZE: S</span>
                 </div>
-                <div className="flex items-center">
-                  <QtyCounter height="10" width="20" />
+                <div className="h-12 flex items-center">
+                  <QtyCounter height='12'  width="20" />
                   <CgTrash
                     onClick={removeFromCart}
                     className="w-4.5 h-4.5 text-red-500"

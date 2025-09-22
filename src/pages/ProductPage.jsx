@@ -125,7 +125,7 @@ const ProductPage = () => {
                   <QtyCounter />
                   <button
                     onClick={addToCart}
-                    className="w-[75%] xy-center text-center text-xs py-[7px] px-[30px] cursor-pointer border"
+                    className="w-[75%] h-12 xy-center text-center text-xs py-[7px] px-[30px] cursor-pointer border"
                   >
                     ADD TO CART
                   </button>
