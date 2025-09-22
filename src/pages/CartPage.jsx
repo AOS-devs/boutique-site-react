@@ -31,7 +31,7 @@ const CartPage = () => {
   return (
     <div className="w-full my-5 px-4 flex flex-col md:flex-row-reverse lg:flex-row-reverse lg:gap-8 txtColor">
       <Cart />
-      <div className="w-full md:w-5/8 lg:w-5/8 md:h-[85vh] lg:h-[106vh] md:overflow-y-scroll md:[scrollbar-width:none] lg:overflow-y-scroll lg:[scrollbar-width:none] text-lg py-12.5 flex flex-col ">
+      <div className="w-full md:w-5/8 md:h-[106vh] lg:w-5/8 md:h-[85vh] lg:h-[106vh] md:overflow-y-scroll md:[scrollbar-width:none] lg:overflow-y-scroll lg:[scrollbar-width:none] text-lg py-12.5 flex flex-col ">
         <div className="w-full mb-5 text-center ">
           <h2 className="w-full h-7.5 text-[26px] font-semibold mb-2.5 py-1 ">
             YOU MAY ALSO LIKE
