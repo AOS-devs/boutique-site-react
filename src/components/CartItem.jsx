@@ -19,7 +19,7 @@ const CartItem = () => {
                 />
               </figure>
               <div className="w-full h-full flex-1 flex flex-col gap-1">
-                <Link className="w-full text-xs font-bold text-wrap">
+                <Link className="w-full text-base md:text-xs lg:text-base font-bold text-wrap">
                   HF X 101 AVENUE HOODIE TOP
                 </Link>
                 <div className="my-1.5 flex flex-col">
