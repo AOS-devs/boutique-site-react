@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { images, products } from "../contexts/Products";
 import ProductCarousel from "../components/ProductCarousel";
-
+import ScrollToTopLink from "../components/ScrollToTopLink";
 
 const HomePage = () => {
   return (
@@ -18,9 +18,9 @@ const HomePage = () => {
       <div className="w-full p-4 text-xs flex flex-col">
         <h2 className="mb-5 font-bold">NEW IN</h2>
         <p className="mb-5">EXPLORE OUR NEW COLLECTION</p>
-        <Link to="/allproducts" className="mb-8 ">
+        <ScrollToTopLink to="/allproducts" className="mb-8 ">
           <span className="w-full h-full border-b pb-1">Shop New In</span>
-        </Link>
+        </ScrollToTopLink>
         <ProductCarousel />
       </div>
     </div>

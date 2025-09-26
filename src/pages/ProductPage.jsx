@@ -8,24 +8,33 @@ import { TbBox, TbIroning } from "react-icons/tb";
 import { BsPinterest } from "react-icons/bs";
 import ProductCarousel from "../components/ProductCarousel";
 import Faq from "../components/Faq";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QtyCounter from "../components/QtyCounter";
+import ScrollToTopLink from "../components/ScrollToTopLink";
 
 const ProductPage = () => {
-  const [count, setCount] = useState(1)
   const { id } = useParams();
+  const [qtyCount, setQtyCount] = useState(1);
+  const { cart, addToCart } = useCart();
+
+  const handleInputChange = (e) => {
+    setQtyCount(parseInt(e.target.value));
+  };
 
   const handleIncreaseQty = () => {
-    setCount(prev => prev+1)
-  }
+    setQtyCount((prev) => prev + 1);
+  };
 
   const handleDecreaseQty = () => {
-    setCount(prev => Math.max(prev-1, 1))
-  }
+    setQtyCount((prev) => Math.max(prev - 1, 1));
+  };
 
-  const { cart, addToCart, incrementCartItem, decrementCartItem } = useCart();
+  const handleAddToCart = () => {
+    addToCart(product, qtyCount);
+    setQtyCount(1);
+    window.scrollTo({top: 0, behavior: "smooth"});
+  };
 
-  console.log( cart)
   /* The below extracts clicked product's detail by ID */
   const extractProductbyID = products.filter((product) => {
     if (product.id === id) {
@@ -35,7 +44,6 @@ const ProductPage = () => {
   /* The above extracts clicked product's detail by ID */
 
   const product = extractProductbyID[0];
-  console.log(product.id)
 
   if (!product) {
     return <div>Product not found </div>;
@@ -44,8 +52,8 @@ const ProductPage = () => {
   return (
     <main className="h-auto text-xs px-4 ">
       <nav className="w-full min-h-12 text-xs p-[15px] flex items-center ">
-        <Link to="/">Home</Link> <i className="mx-2">|</i>{" "}
-        <Link>{product.title}</Link>
+        <ScrollToTopLink to="/">Home</ScrollToTopLink> <i className="mx-2">|</i>{" "}
+        <ScrollToTopLink>{product.title}</ScrollToTopLink>
       </nav>
       <div>
         <div className="shadow-sm h-[90vh] flex flex-col justify-center items-center ">
@@ -122,9 +130,32 @@ const ProductPage = () => {
               </div>
               <div className="w-full h-[106px] text-lg mb-[25px] flex flex-col flex-1 ">
                 <div className="w-full mb-2.5 flex ">
-                  <QtyCounter />
+                  <div
+                    className={`h-12 w-[25%]  mr-[10px] flex items-center border`}
+                  >
+                    <button
+                      onClick={handleDecreaseQty}
+                      className="w-[33%] h-full text-center xy-center cursor-pointer"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      value={qtyCount}
+                      min="1"
+                      onChange={handleInputChange}
+                      readOnly
+                      className="w-[34%] h-full text-center xy-center font-bold"
+                    />
+                    <button
+                      onClick={handleIncreaseQty}
+                      className="w-[33%] h-full text-center xy-center cursor-pointer"
+                    >
+                      +
+                    </button>
+                  </div>
                   <button
-                    onClick={addToCart}
+                    onClick={handleAddToCart}
                     className="w-[75%] h-12 xy-center text-center text-xs py-[7px] px-[30px] cursor-pointer border"
                   >
                     ADD TO CART

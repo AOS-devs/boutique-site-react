@@ -1,6 +1,7 @@
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import ScrollToTopLink from "./ScrollToTopLink";
 
 const Sidebar = ({ isOpen }) => {
   return (
@@ -11,24 +12,24 @@ const Sidebar = ({ isOpen }) => {
             isOpen ? `translate-x-0` : "-translate-x-full"
           } transition-transform duration-300 ease-in-out z-20 `}
         >
-          <Link to="/">
+          <ScrollToTopLink to="/">
             <div className="border-b py-4">HOME</div>
-          </Link>
+          </ScrollToTopLink>
           <Link to="">
             <div className="border-b py-4 flex justify-between ">
               <div>SHOP</div>
               <FaArrowRightLong className="w-4 h-4" />
             </div>
           </Link>
-          <Link to="">
+          <ScrollToTopLink to="">
             <div className="border-b py-4">ABOUT</div>
-          </Link>
-          <Link to="">
+          </ScrollToTopLink>
+          <ScrollToTopLink to="">
             <div className="border-b py-4">FAQ</div>
-          </Link>
-          <Link to="">
+          </ScrollToTopLink>
+          <ScrollToTopLink to="">
             <div className="border-b py-4">CONTACT</div>
-          </Link>
+          </ScrollToTopLink>
         </div>
       )}
     </>

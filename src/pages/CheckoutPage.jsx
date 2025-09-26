@@ -82,7 +82,7 @@ const CheckoutPage = () => {
           </div>
         </div>
 
-        <button type="submit" className="bg-blue-500 px-4 py-2 text-white rounded w-full">
+        <button type="submit" className="bg-[#151515] px-4 py-2 text-white rounded w-full cursor-pointer hover:bg-black hover:font-bold">
           Place Order
         </button>
       </form>
