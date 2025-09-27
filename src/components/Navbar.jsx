@@ -1,26 +1,25 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../contexts/CartContext";
-import { useState } from "react";
 
-const Navbar = ({onHamburgerStateChange}) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const { cart } = useCart();
-
-  const hamburgerHandler = () => {
-    setIsOpen(prev => {
-      const newState = !prev
-      onHamburgerStateChange(newState)
-      return newState
-    })
-  }
-
+const Navbar = ({ hamburgerHandler, isOpen }) => {
   return (
     <nav className="border-b border-b-[#888] py-4 flex justify-between items-center bg-[#151515] text-white h-[70px] w-full relative">
-      <div className="flex flex-col justify-center items-center  cursor-pointer h-[48px] w-[48px] gap-[5px]" onClick={hamburgerHandler} >
-        <span className={`bg-white w-[20px] h-[1.5px] origin-center transition-transform ${isOpen ? "rotate-45 translate-y-[3px]" : ""}`}></span>
-        <span className={`bg-white w-[20px] h-[1.5px] ${isOpen ? "hidden": ""}`}></span>
-        <span className={`bg-white w-[20px] h-[1.5px] origin-center transition-transform ${isOpen ? "-rotate-45 -translate-y-[3px]": ""}`}></span>
+      <div
+        className="flex flex-col justify-center items-center  cursor-pointer h-[48px] w-[48px] gap-[5px]"
+        onClick={hamburgerHandler}
+      >
+        <span
+          className={`bg-white w-[20px] h-[1.5px] origin-center transition-transform ${
+            isOpen ? "rotate-45 translate-y-[3px]" : ""
+          }`}
+        ></span>
+        <span
+          className={`bg-white w-[20px] h-[1.5px] ${isOpen ? "hidden" : ""}`}
+        ></span>
+        <span
+          className={`bg-white w-[20px] h-[1.5px] origin-center transition-transform ${
+            isOpen ? "-rotate-45 -translate-y-[3px]" : ""
+          }`}
+        ></span>
       </div>
       <Link to="/">Logo</Link>
       <div className="flex gap-2 mr-4 cursor-pointer">
@@ -41,7 +40,7 @@ const Navbar = ({onHamburgerStateChange}) => {
             ></path>
           </svg>
         </div>
-        <Link to="/cart" className="cursor-pointer" >
+        <Link to="/cart" className="cursor-pointer">
           <svg
             width="19"
             height="20"

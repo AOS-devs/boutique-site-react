@@ -4,26 +4,35 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import CurrencySelector from "../components/CurrencySelector";
 
 const ClientLayout = ({ children }) => {
-  const [isHamburgerToggled, setIsHamburgerToggled] = useState(null);
+  /* const [isHamburgerToggled, setIsHamburgerToggled] = useState(null);
   const handleHamburgerStateChange = (isOpen) => {
     setIsHamburgerToggled(isOpen);
+  }; */
+
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const closeOnNavigate = () => {
+    setIsOpen(false);
+  };
+  const hamburgerHandler = () => {
+    setIsOpen((prev) => {
+      const newState = !prev;
+      return newState;
+    });
   };
 
   return (
     <>
       <AnnouncementBar />
-      <Navbar onHamburgerStateChange={handleHamburgerStateChange} />
-      <Sidebar isOpen={isHamburgerToggled} />
+      <Navbar hamburgerHandler={hamburgerHandler} isOpen={isOpen} />
+      <Sidebar isOpen={isOpen} closeOnNavigate={closeOnNavigate} />
       <main>{children}</main>
       <Footer />
       <div className="fixed top-[92.5%] left- w-full px-2.5 flex justify-between items-center">
-        <button className="w-20 h-8 flex items-center border bg-white">
-          <div className="text-center flex-1 font-bold">USD</div>
-          <RiArrowDropDownLine className="w-8 h-full" />
-        </button>
+        <CurrencySelector />
         <div className="text-white p-1.5 flex justify-center items-center gap-2 bg-[#282828] rounded-2xl ">
           <BiSolidMessageSquareDots className="w-6 h-6" />
           <div>Chat with us</div>
