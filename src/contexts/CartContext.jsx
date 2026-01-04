@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
 const CART_ACTIONS = {
   ADD_ITEM: "ADD_ITEM",
@@ -38,7 +38,10 @@ const CartReducer = (state, action) => {
     } else {
       newState = {
         ...state,
-        items: [...state.items, { ...action.item, quantity: action.quantity ?? 1 }],
+        items: [
+          ...state.items,
+          { ...action.item, quantity: action.quantity ?? 1 },
+        ],
         totalQuantity: state.totalQuantity + qtyToAdd,
         totalPrice: state.totalPrice + action.item.price * qtyToAdd,
       };
@@ -51,8 +54,7 @@ const CartReducer = (state, action) => {
       ...state,
       items: state.items.filter((item) => item.id !== action.id),
       totalQuantity: state.totalQuantity - itemToRemove.quantity,
-      totalPrice:
-        state.totalPrice - itemToRemove.price * itemToRemove.quantity,
+      totalPrice: state.totalPrice - itemToRemove.price * itemToRemove.quantity,
     };
   }
 
@@ -60,20 +62,18 @@ const CartReducer = (state, action) => {
     newState = {
       ...state,
       items: state.items.map((item) =>
-        item.id === action.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
+        item.id === action.id ? { ...item, quantity: item.quantity + 1 } : item
       ),
       totalQuantity: state.totalQuantity + 1,
-      totalPrice: state.totalPrice + state.items.find(item => item.id === action.id).price,
+      totalPrice:
+        state.totalPrice +
+        state.items.find((item) => item.id === action.id).price,
     };
   }
 
   if (action.type === CART_ACTIONS.DECREASE_QUANTITY) {
-    const itemToDecrease = state.items.find(
-      (item) => item.id === action.id
-    );
-    if(!itemToDecrease) return state;
+    const itemToDecrease = state.items.find((item) => item.id === action.id);
+    if (!itemToDecrease) return state;
 
     if (itemToDecrease.quantity === 1) {
       newState = {
@@ -112,9 +112,16 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState);
+  const [isBump, setIsBump] = useState(false);
+  
+  let isItemInCart = false;
 
   const addItem = (item, quantity) => {
     dispatch({ type: "ADD_ITEM", item, quantity });
+    setIsBump(true);
+    setTimeout(() => {
+      setIsBump(false);
+    }, 300);
   };
 
   const removeItem = (id) => {
@@ -133,6 +140,9 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "CLEAR_CART" });
   };
 
+  if (state.totalQuantity !== 0) {
+    isItemInCart = true;
+  }
   return (
     <CartContext.Provider
       value={{
@@ -144,6 +154,8 @@ export const CartProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         clearCart,
+        isItemInCart,
+        isBump,
       }}
     >
       {children}

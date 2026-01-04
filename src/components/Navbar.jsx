@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useHamburger } from "../contexts/HamburgerContext";
+import { useCart } from "../contexts/CartContext";
 
-const Navbar = ({ hamburgerHandler, isOpen }) => {
+const Navbar = () => {
+  const { toggleHamburger: hamburgerHandler, isOpen } = useHamburger();
+  const { isItemInCart, isBump } = useCart();
+
+  const location = useLocation();
+  const isHomePage = window.location.pathname === "/";
+
   return (
-    <nav className="border-b border-b-[#888] py-4 flex justify-between items-center bg-[#151515] text-white h-[70px] w-full relative">
+    <nav
+      className={`border-b border-b-[#888] py-4 flex justify-between items-center ${
+        isHomePage
+          ? "bg-transparent absolute top-[30px]"
+          : "bg-[#151515]  sticky top-0"
+      } text-white h-[70px] w-full z-20`}
+    >
       <div
         className="flex flex-col justify-center items-center  cursor-pointer h-[48px] w-[48px] gap-[5px]"
         onClick={hamburgerHandler}
@@ -40,7 +54,10 @@ const Navbar = ({ hamburgerHandler, isOpen }) => {
             ></path>
           </svg>
         </div>
-        <Link to="/cart" className="cursor-pointer">
+        <Link to="/cart" className={`cursor-pointer ${isBump ? "bump" : ""}`}>
+          {isItemInCart && (
+            <div className="w-2.5 h-2.5 rounded-full border  bg-red-500 absolute top-[16px] right-[8px]" />
+          )}
           <svg
             width="19"
             height="20"

@@ -2,25 +2,30 @@ import { FaArrowRightLong, FaInstagram } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import DropdownButton from "./DropdownButton";
 import MoreInfoTab from "./MoreInfoTab";
+import ScrollToTopLink from "./ScrollToTopLink";
 
 const Footer = () => {
   const quickLinks = (
     <div className="flex flex-col gap-2 text-[11px]">
-      <Link to="/">HOME</Link>
-      <Link to="/allproducts">ABOUT</Link>
-      <Link to="/allproducts">CONTACT</Link>
-      <Link to="/allproducts">FAQ</Link>
+      <ScrollToTopLink to="/">HOME</ScrollToTopLink>
+      <ScrollToTopLink to="/about">ABOUT</ScrollToTopLink>
+      <ScrollToTopLink to="/contact">CONTACT</ScrollToTopLink>
+      <ScrollToTopLink to="/faq">FAQ</ScrollToTopLink>
     </div>
   );
-  const shopLink = <Link to="/allproducts" className="text-[11px]">SHOP ALL</Link>;
+  const shopLink = (
+    <ScrollToTopLink to="/allproducts" className="text-[11px]">
+      SHOP ALL
+    </ScrollToTopLink>
+  );
   return (
     <footer className="w-full h-[130vh] bg-[#151515] text-white p-4 relative ">
       <div className="mb-10">
-        <Link to="/" className="w-full flex mb-4">
+        <ScrollToTopLink to="/" className="w-full flex mb-4">
           <figure className="w-full h-full">
             <img src={null} alt="Logo" />
           </figure>
-        </Link>
+        </ScrollToTopLink>
         <p className="text-[12px] mb-4 ">
           At High Fashion By Jol, we believe that fashion is an expression of
           individuality and artistry.

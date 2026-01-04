@@ -33,15 +33,26 @@ body {
   color: #151515;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.bump {
+  animation: bounce 1s ease-in;
 }
 
 .scroll-animation {
-  animation: scroll 17s linear infinite;
+  animation: marquee 20s linear infinite;
 }
+
+@keyframes bounce {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-50px);}
+  100% {transform: translateY(0);}
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+

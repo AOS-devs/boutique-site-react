@@ -24,6 +24,7 @@ const CurrencySelector = () => {
       >
         <option value="USD">USD</option>
         <option value="NGN">NGN</option>
+        <option value="GBP">GBP</option>
       </select>
       {isSelectorOpen ? (
         <RiArrowDropUpLine className="absolute right-1 w-6 h-6 pointer-events-none" />

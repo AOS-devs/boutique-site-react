@@ -1,18 +1,16 @@
 import React from "react";
 import { products } from "../contexts/Products";
-import { Link } from "react-router-dom";
 import ScrollToTopLink from "./ScrollToTopLink";
 
 const ProductCarousel = () => {
   const isCartPage = window.location.pathname === "/cart";
   return (
-    <div className={`${isCartPage ? "md:h-auto lg:h-auto md:flex-wrap lg:flex-wrap " : "h-80 overflow-x-auto [scrollbar-width:none]" } w-full text-xs flex gap-4`}>
+    <div className={`${isCartPage ? "overflow-x-auto md:h-auto lg:h-auto md:flex-wrap lg:flex-wrap " : "h-80 overflow-x-auto [scrollbar-width:none]" } w-full text-xs flex gap-4`}>
       {products.map((product) => {
         return (
           <ScrollToTopLink key={product.id} to={`/product/${product.id}`} className={`${isCartPage && "md:mx-auto"} `}>
             <div className={`w-50 ${isCartPage ? "": ""} h-full flex flex-col flex-shrink-0 items-center`}>
               <figure className="mb-4 w-full shadow-xs ">
-                {/* review shadow tailwind */}
                 <img
                   src={product.image}
                   alt=""

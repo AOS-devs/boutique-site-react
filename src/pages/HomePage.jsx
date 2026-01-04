@@ -2,17 +2,20 @@ import { Link } from "react-router-dom";
 import { images, products } from "../contexts/Products";
 import ProductCarousel from "../components/ProductCarousel";
 import ScrollToTopLink from "../components/ScrollToTopLink";
+import heroImage from "../assets/IMG_4215-scaled_a9ee11c2-7283-4bee-9482-b464ff1f2879.webp"
 
 const HomePage = () => {
   return (
-    <div className="w-full h-auto">
-      <div className="h-[60vh] bg-[#151515] text-white text-center flex justify-end items-center gap-8 p-4 flex-col mb-12 ">
-        <span className="text-xs">EXPLORE OUR NEW COLLECTION</span>
-        <div className="flex gap-4">
-          <span>O</span>
-          <span>O</span>
-          <span>O</span>
-          <span>O</span>
+    <div className="w-full h-auto ">
+      <div className="h-[80vh] bg-cover" style={{backgroundImage: `url(${heroImage})`}}>
+        <div className="h-[60vh] text-white text-center flex justify-end items-center gap-8 p-4 flex-col mb-12 ">
+          <span className="text-xs">EXPLORE OUR NEW COLLECTION</span>
+          <div className="flex gap-4">
+            <span>O</span>
+            <span>O</span>
+            <span>O</span>
+            <span>O</span>
+          </div>
         </div>
       </div>
       <div className="w-full p-4 text-xs flex flex-col">
